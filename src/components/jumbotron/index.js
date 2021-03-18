@@ -3,7 +3,7 @@ import { Inner } from './styles/jumbotron'
 
 export function Jumbotron ({direction = 'row'}){
     return (
-        <Inner direction={direction}>Hello</Inner>
+        <Inner direction={direction}>BismiAllah</Inner>
     )
 }
 
