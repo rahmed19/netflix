@@ -14,4 +14,4 @@ html, body {
     font-size: 16px;
 }`
 
-export default GlobalStyles
+export { GlobalStyles }
