@@ -7,7 +7,7 @@ import {Container,
     Text, 
     Break} from './styles/footer' 
 
-export default function ({children, ...restProps}) {
+export default function Footer ({children, ...restProps}) {
     return <Container>{children}</Container>
 }
 
