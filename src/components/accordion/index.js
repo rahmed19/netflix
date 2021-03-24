@@ -27,10 +27,10 @@ Accordion.Frame = function AccordionFrame({children, ...restProps}) {
 } 
 
 Accordion.Item = function AccordionItem({children, ...restProps}) {
-    const [toggle, setToggleShow] = useState(false)
+    const [toggleShow, setToggleShow] = useState(false)
      
     return (
-        <ToggleContext.Provider value={{ toggle, setToggleShow }}>
+        <ToggleContext.Provider value={{ toggleShow, setToggleShow }}>
             <Item {...restProps}>{children}</Item>
         </ToggleContext.Provider>
     )
@@ -42,13 +42,27 @@ Accordion.Header = function AcordionHeader({children, ...restProps}){
     return (
 
         <Header 
-        onClick={()=> setToggleShow((toggleShow)=> !toggleShow)}  
-        {...restProps}>{children}</Header>
+        onClick={() =>  setToggleShow(prevState => (!toggleShow))} 
+         
+        {...restProps}>
+            {children}
+            {toggleShow ? (
+               <img src="/images/icons/close-slim.png" alt="close" />
+               
+            ) : (
+                <img src="/images/icons/add.png" alt="open" />
+            )}
+        </Header>
     )
 } 
  
-Accordion.Body = function AccordionBody({children, ...restProps}) {
-    const {toggleShow} = useContext(ToggleContext)
+Accordion.Body = function AccordionBody({ children, ...restProps }) {
+    const { toggleShow } = useContext(ToggleContext)
 
-    return toggleShow ? <Body {...restProps}>{children}</Body> : null 
+    return(
+        <Body className={toggleShow ? 'open' : 'closed'}>
+            <span>{children}</span>
+        </Body>
+    ) 
+    //toggleShow ? <Body className={toggleShow ? 'open' : 'close'} {...restProps}>{children}</Body> : null 
 }
