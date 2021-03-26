@@ -5,6 +5,7 @@ import { GlobalStyles } from './global-styles'
 import 'normalize.css'
 import reportWebVitals from './reportWebVitals';
 
+
 ReactDOM.render(
 <> 
 <GlobalStyles />
