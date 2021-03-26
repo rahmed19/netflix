@@ -12,7 +12,7 @@ export default function Home(){
             <HeaderContainer>
                 <Feature>
                     <Feature.Title>Unlimited films, TV programmes and more.</Feature.Title>
-                    <Feature.SubTitle>Watch anaywhere. Cancel any time.</Feature.SubTitle>
+                    <Feature.SubTitle>Watch anywhere. Cancel any time.</Feature.SubTitle>
                     <OptForm>
                         <OptForm.Input placeholder="Emails Address" />
                         <OptForm.Button>Try it now</OptForm.Button>
