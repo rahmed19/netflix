@@ -13,7 +13,7 @@ export default function Signin() {
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
 
-    const isInValid = password == '' || emailAddress == ''
+    const isInValid = password === '' || emailAddress === ''
     const handleSignIn = (e) => {
         e.preventDefault()
 
@@ -62,7 +62,7 @@ export default function Signin() {
              New to Netflix? <Form.Link to="/signup">Sign up now</Form.Link>
          </Form.Text>
          <Form.TextSmall>
-             This page is protexted by Google reCAPTCHAto ensure you're not a bot. Learn more.
+             This page is protexted by Google reCAPTCHA to ensure you're not a bot. Learn more.
          </Form.TextSmall>
      </Form>    
     </HeaderContainer>
