@@ -23,5 +23,5 @@ export default function useContent(target) {
             })
     }, [])
 
-    return { [target]: content }
+    return content
 }
