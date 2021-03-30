@@ -16,8 +16,6 @@ export default function useAuthListener(){
                 setUser(null)
             }
         })
-        console.log('hello')
-        console.log(user)
         return ()=> listener()
     }, [])
 
