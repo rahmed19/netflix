@@ -14,7 +14,8 @@ import {Background,
         Dropdown,
         Search,
         SearchIcon,
-        SearchInput} from './styles/header'
+        SearchInput,
+        PlayButton} from './styles/header'
 
 export default function Header({bg=true, children, ...restProps}){
     return bg ? <Background {...restProps}>{children}</Background> : children
@@ -60,6 +61,10 @@ Header.Profile = function HeaderProfile({ children, ...restProps}) {
 
 Header.TextLink = function HeaderTextLink({children, ...restProps}) {
     return <Link {...restProps}>{children}</Link>
+}
+
+Header.PlayButton = function HeaderPlayButton({children, ...restProps}){
+    return <PlayButton {...restProps}>{children}</PlayButton>
 }
 
 Header.FeatureCallOut = function HeaderFeatureCallOut({ children, ...restProps}) {
