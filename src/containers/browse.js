@@ -24,7 +24,7 @@ export function BrowseContainer(slides) {
     {loading ? (
       <Loading src={user.photoURL} />
     ) : (
-    <Loading.ReleaseBody />
+    <Loading.ReleaseBody /> 
     )} 
     <Header src="joker1" dontShowOnSmallViewPort>
       <Header.Frame>
@@ -41,6 +41,11 @@ export function BrowseContainer(slides) {
                 <Header.Picture src={user.photoURL} /> 
                 <Header.TextLink>
                   {user.displayName}
+                </Header.TextLink>
+              </Header.Group>
+              <Header.Group>
+                <Header.TextLink onClick={() => firebase.auth().signOut()}>
+                  Sign out
                 </Header.TextLink>
               </Header.Group>
             </Header.Dropdown>        
