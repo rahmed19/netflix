@@ -6,8 +6,8 @@ import { Card, Header, Loading } from '../components'
 import * as ROUTES from '../constants/routes'
 import logo from '../logo.svg'
 
-export function BrowseContainer(slides) {
-  const [category, setCategory] = useState('films')
+export function BrowseContainer({slides}) {
+  const [category, setCategory] = useState('series')
   const [searchTerm, setSearchTerm] = useState('')
   const [profile, setProfile] = useState({})
   const [loading, setLoading] = useState(true)
@@ -17,7 +17,7 @@ export function BrowseContainer(slides) {
   const user = firebase.auth().currentUser || {}
 
   useEffect(()=>{
-     setSlideRows([slides])
+     setSlideRows(slides['series'])
      //setSlideRows([1,2,3])
   }, [slides, category])
 
@@ -89,10 +89,11 @@ export function BrowseContainer(slides) {
     </Header>
 
     <Card.Group>
-      {console.log(slides)}
-     
-     
-
+      {slideRows.map((slideItem) =>(
+        <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
+          <Card.Title>{slideItem.title}</Card.Title>
+        </Card>
+      ))}
     </Card.Group>
     
     </>
