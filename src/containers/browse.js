@@ -7,17 +7,18 @@ import * as ROUTES from '../constants/routes'
 import logo from '../logo.svg'
 
 export function BrowseContainer(slides) {
-  const [category, setCategory] = useState('series')
-  const [slideRows, setSlideRows] = useState([])
+  const [category, setCategory] = useState('films')
   const [searchTerm, setSearchTerm] = useState('')
   const [profile, setProfile] = useState({})
   const [loading, setLoading] = useState(true)
+  const [slideRows, setSlideRows] = useState([])
 
   const { firebase } = useContext(FirebaseContext)
   const user = firebase.auth().currentUser || {}
 
   useEffect(()=>{
-      setSlideRows(slides[category])
+     setSlideRows([slides])
+     //setSlideRows([1,2,3])
   }, [slides, category])
 
   useEffect(() => { 
@@ -88,8 +89,12 @@ export function BrowseContainer(slides) {
     </Header>
 
     <Card.Group>
+      {console.log(slides)}
+     
+     
 
     </Card.Group>
+    
     </>
   ) : (
     <SelectProfileContainer user={user} setProfile={setProfile}/>
