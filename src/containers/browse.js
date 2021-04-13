@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react'
 import SelectProfileContainer from './profiles'
 import { FirebaseContext } from '../context/firebase'
-import { Card, Header, Loading } from '../components'
+import { Card, Header, Loading, Player } from '../components'
+import { FooterContainer } from '../containers/footer'
 
 import * as ROUTES from '../constants/routes'
 import logo from '../logo.svg'
@@ -17,8 +18,7 @@ export function BrowseContainer({slides}) {
   const user = firebase.auth().currentUser || {}
 
   useEffect(()=>{
-     setSlideRows(slides['series'])
-     //setSlideRows([1,2,3])
+     setSlideRows(slides[category])
   }, [slides, category])
 
   useEffect(() => { 
@@ -88,6 +88,8 @@ export function BrowseContainer({slides}) {
       </Header.Feature>
     </Header>
 
+
+
     <Card.Group>
       {slideRows.map((slideItem) =>(
         <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
@@ -101,13 +103,20 @@ export function BrowseContainer({slides}) {
                   <Card.Text>{item.description}</Card.Text>
                 </Card.Meta>
               </Card.Item>
-              
             ))}
           </Card.Entities>
+          <Card.Feature category={category}>
+              <Player>
+                <Player.Button />
+                <Player.Video src="/videos/bunny.mp4" />
+              </Player>
+            </Card.Feature>
         </Card>
       ))}
     </Card.Group>
-    
+    <FooterContainer />
+
+
     </>
   ) : (
     <SelectProfileContainer user={user} setProfile={setProfile}/>

@@ -54,7 +54,33 @@ Card.Meta = function CardMeta({ children, ...restProps}) {
     return <Meta {...restProps}>{children}</Meta>
 }
 
-Card.Item = function CardTitle({ children, ...restProps}) {
+Card.Feature = function CardFeature({children, category, ...restProps}){
+    const {showFeature, itemFeature, setShowFeature} = useContext(FeatureContext)
+
+    return showFeature ? (
+        <Feature {...restProps} src={`/images/${category}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}>
+            <Content>
+                <FeatureTitle>{itemFeature.title}</FeatureTitle>
+                <FeatureText>{itemFeature.description}</FeatureText>
+                <FeatureClose onClick={()=>setShowFeature(false)}>
+                    <img src="/images/icons/close.png" alt="Close" />
+                </FeatureClose>
+
+                <Group margin="30 px 0" flexDirection="row" alignItems="center">
+                <Maturity rating={itemFeature.maturity}>
+                    {itemFeature.maturity < 12 ? 'PG' : itemFeature.maturity}
+                </Maturity>
+                <FeatureText fontWeight="bold">
+                    {itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1)}
+                </FeatureText>
+            </Group>
+            {children}
+            </Content>
+        </Feature>
+    ) : null
+}
+
+Card.Item = function CardTitle({ item, children, ...restProps}) {
     const { setShowFeature, setItemFeature } = useContext(FeatureContext)
     return <Item 
             onClick={()=> {
