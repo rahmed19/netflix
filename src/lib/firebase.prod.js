@@ -4,7 +4,7 @@ import 'firebase/auth'
 
 
 const config = {
-    apiKey: "AIzaSyBYKiKJ73TlEHjOxxLBX35pal_dPmCptN4",
+    apiKey: process.env.REACT_API_KEY_NETFLIX,
     authDomain: "netflix-y.firebaseapp.com",
     projectId: "netflix-y",
     storageBucket: "netflix-y.appspot.com",
